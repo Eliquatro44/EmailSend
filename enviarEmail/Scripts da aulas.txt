@@ -1,0 +1,116 @@
+MOVIE STARS
+
+import { ReactComponent as StarFull} from 'assets/img/star-full.svg';
+import { ReactComponent as StarHalf} from 'assets/img/star-half.svg';
+import { ReactComponent as StarEmpty} from 'assets/img/star-empty.svg';
+import './styles.css';
+
+function MovieStars() {
+
+    return (
+        <div className="dsmovie-stars-container">
+            <StarFull />
+            <StarFull />
+            <StarFull />
+            <StarHalf />
+            <StarEmpty />
+        </div>
+    );
+}
+
+export default MovieStars;
+
+
+STYLE.CSS
+
+.dsmovie-stars-container {
+    width: 130px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.dsmovie-stars-container svg {
+    width: 22px;
+    height: auto;
+}
+
+============
+
+MOVIE SCORE
+
+INDEX.TSX
+
+import MovieStars from "components/MovieStars";
+import './styles.css'
+
+function MovieScore() {
+
+    const score = 3.5;
+    const count = 13;
+
+    return (
+        <div className="dsmovie-score-container">
+            <p className="dsmovie-score-value">{score > 0 ? score.toFixed(1) : '-'}</p>
+            <MovieStars />
+            <p className="dsmovie-score-count">{count} avaliações</p>
+        </div>
+    )
+}
+
+export default MovieScore;
+
+
+STYLES.CSS
+
+.dsmovie-score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dsmovie-score-value {
+    margin: 0;
+    color: #FFBB3A;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.dsmovie-score-count {
+    font-size: 12px;
+    color: #989898;
+    margin: 4px 0 10px 0;
+}
+
+
+===========================
+
+MOVIE CARD
+
+
+INDEX.TSX
+
+
+function MovieCard() {
+
+    const movie = {
+        id: 1,
+        image: "https://www.themoviedb.org/t/p/w533_and_h300_bestv2/jBJWaqoSCiARWtfV0GlqHrcdidd.jpg",
+        title: "The Witcher",
+        count: 2,
+        score: 4.5
+    };
+
+    return (
+        <div>
+            <img className="dsmovie-movie-card-image" src={movie.image} alt={movie.title} />
+            <div className="dsmovie-card-bottom-container">
+                <h3>{movie.title}</h3>
+                <MovieCard />
+                <div className="btn btn-primary dsmovie-btn">Avaliar</div>
+            </div>
+        </div>
+    );
+}
+
+export default MovieCard;
+
